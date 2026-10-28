@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ouroboros Traffic</title>
+  </head>
+  <body>
+    <canvas id="sim-canvas"></canvas>
+
+    <aside id="panel" class="glass">
+      <header>
+        <h1><img src="/logo.svg" alt="" class="logo" /> Ouroboros Traffic</h1>
+        <span id="phase" class="badge">…</span>
+      </header>
+
+      <div class="grid">
+        <div class="stat"><label>Time</label><b id="s-time">0:00</b></div>
+        <div class="stat"><label>Generation</label><b id="s-gen">1</b></div>
+        <div class="stat"><label>Vehicles</label><b id="s-veh">0</b></div>
+        <div class="stat"><label>Citizens</label><b id="s-cit">0</b></div>
+        <div class="stat"><label>Pedestrians</label><b id="s-ped">0</b></div>
+        <div class="stat"><label>Buildings</label><b id="s-bldg">0</b></div>
+        <div class="stat"><label>Parked Cars</label><b id="s-park">0</b></div>
+        <div class="stat"><label>Avg Speed</label><b id="s-speed">0</b><small>km/h</small></div>
+        <div class="stat"><label>Flow</label><b id="s-flow">0</b><small>veh/min</small></div>
+        <div class="stat"><label>Jammed roads</label><b id="s-jam">0</b></div>
+      </div>
+
+      <div class="meter"><label>Congestion</label><div class="bar"><i id="m-cong"></i></div></div>
+      <div id="analysis" class="meter hidden"><label>Shadow simulations</label><div class="bar"><i id="m-prog" class="cyan"></i></div></div>
+
+      <canvas id="chart" width="300" height="80"></canvas>
+      <div class="legend">
+        <span style="color:#8ecae6">■ vehicles</span>
+        <span style="color:#ffd166">■ speed</span>
+        <span style="color:#b5e48c">■ flow</span>
+      </div>
+
+      <div class="mods">
+        <div><b id="mod-exp">0</b><small>Expanded</small></div>
+        <div><b id="mod-a">0</b><small>Widened</small></div>
+        <div><b id="mod-b">0</b><small>Roundabouts</small></div>
+        <div><b id="mod-c">0</b><small>Bypasses</small></div>
+        <div><b id="s-nodes">0</b><small id="s-nodes-max">Nodes</small></div>
+      </div>
+
+      <h2>City Planner Log</h2>
+      <ul id="log"></ul>
+    </aside>
+
+    <aside id="changes-panel" class="glass">
+      <header>
+        <h2>⟲ City Chronicle</h2>
+        <span id="changes-count" class="badge">0 updates</span>
+      </header>
+      <p class="panel-hint">Click any update below to locate and inspect the change on the map.</p>
+      <ul id="changes-list"></ul>
+    </aside>
+
+    <nav id="controls" class="glass">
+      <button id="btn-play" title="Space">⏸ Pause</button>
+      <div class="seg" id="speeds">
+        <button data-speed="1" class="active">×1</button>
+        <button data-speed="5">×5</button>
+        <button data-speed="10">×10</button>
+      </div>
+      <label><input type="checkbox" id="cb-heat" checked /> Congestion</label>
+      <label><input type="checkbox" id="cb-nodes" /> Nodes</label>
+      <label><input type="checkbox" id="cb-paths" /> Paths</label>
+      <label><input type="checkbox" id="cb-solver" checked /> AI Planner</label>
+      <button id="btn-view">⌖ Reset view</button>
+      <button id="btn-new">↻ New city</button>
+    </nav>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
