@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ouroboros-traffic
+    ports:
+      - "8080:80"
+      - "5173:80"
+    restart: unless-stopped
